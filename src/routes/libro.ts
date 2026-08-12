@@ -65,7 +65,7 @@ router.get('/:id', async (req: Request, res: Response) => {
 router.put('/:id', async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
-    const { titulo, autor, disponibilidad } = req.body;
+    const { titulo, autor } = req.body;
 
     const libro = await Book.findByPk(id);
 
@@ -78,7 +78,6 @@ router.put('/:id', async (req: Request, res: Response) => {
     await libro.update({
       title: titulo,
       author: autor,
-      disponibilidad,
     });
 
     return res.status(200).json({

@@ -6,10 +6,17 @@ const router = express.Router();
 router.post('/', async (req: Request, res: Response) => {
   try {
     const { name, email } = req.body;
+
+    const UsuarioExiste = await user.findOne({ where: { email } });
+    if (UsuarioExiste) {
+      return res.status(409).json({
+        message: 'El correo electrónico ya está registrado.',
+      });
+    }
     const newUser = await user.create({ name, email });
     res.status(201).json(newUser);
   } catch (error) {
-    res.status(500).json({ error: 'Error al crear el usuario' });
+    return res.status(500).json({ error: 'Error al crear el usuario' });
   }
 });
 

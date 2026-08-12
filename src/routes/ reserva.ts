@@ -11,6 +11,7 @@ router.post('/', async (req: Request, res: Response) => {
         message: 'Todos los campos (userId, bookId) son obligatorios.',
       });
     }
+
     const libroExiste = await Book.findByPk(bookId);
     if (!libroExiste) {
       return res.status(404).json({
