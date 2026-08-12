@@ -4,6 +4,7 @@ import db from './config/database.js';
 import RouterBooks from './routes/libro.js';
 import RouterReserva from './routes/ reserva.js';
 import RouterUser from './routes/user.js';
+import { User, Book, Reserve } from './models/index.js';
 
 const app = express();
 app.use(express.json());

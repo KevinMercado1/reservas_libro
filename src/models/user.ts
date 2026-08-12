@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../config/database.js';
+import Reserve from './reserva.js';
 
 class User extends Model {
   declare id: number;
@@ -28,7 +29,7 @@ User.init(
     sequelize: db,
     modelName: 'User',
     tableName: 'users',
-  }
+  },
 );
 
 export default User;

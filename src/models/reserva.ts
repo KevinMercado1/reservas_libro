@@ -1,10 +1,12 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../config/database.js';
+import User from './user.js';
+import Book from './book.js';
 
 class Reserve extends Model {
   declare id: number;
-  declare user_id: number;
-  declare book_id: number;
+  declare userId: number;
+  declare bookId: number;
   declare status: 'pendiente' | 'completada' | 'cancelada';
 }
 
@@ -15,11 +17,11 @@ Reserve.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    book_id: {
+    bookId: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -33,7 +35,7 @@ Reserve.init(
     sequelize: db,
     modelName: 'Reserve',
     tableName: 'reserves',
-  }
+  },
 );
 
 export default Reserve;
