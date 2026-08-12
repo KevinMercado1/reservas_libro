@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/', async (req: Request, res: Response) => {
   try {
-    const { titulo, autor, disponibilidad } = req.body;
+    const { titulo, autor } = req.body;
 
     if (!titulo || !autor) {
       return res.status(400).json({
@@ -16,7 +16,6 @@ router.post('/', async (req: Request, res: Response) => {
     const nuevoLibro = await Book.create({
       title: titulo,
       author: autor,
-      disponibilidad,
     });
 
     return res.status(201).json(nuevoLibro);
