@@ -13,6 +13,7 @@ router.post('/', async (req: Request, res: Response) => {
         message: 'El correo electrónico ya está registrado.',
       });
     }
+
     const newUser = await user.create({ name, email });
     res.status(201).json(newUser);
   } catch (error) {
